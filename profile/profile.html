@@ -3,91 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Profile - UBC Meetup</title>
     <link rel="stylesheet" href="profile.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Navigation -->
-        <nav>
-            <a href="home.html">
-                <button>Home</button>
-            </a>
-            <a href="maps.html">
-                <button>Maps</button>
-            </a>
-            <a href="Events.html">
-                <button>Events</button>
-            </a>
-            <a href="Messages.html">
-                <button>Messages</button>
-            </a>
-            <a href="Profile.html">
-                <button class="active">Profile</button>
-            </a>
-        </nav>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../home/home.html"><button>Home</button></a>
+            <a href="../maps/maps.html"><button>Maps</button></a>
+            <a href="../events/Events.html"><button>Events</button></a>
+            <a href="../messages/Messages.html"><button>Messages</button></a>
+            <a href="../profile/profile.html"><button class="active">Profile</button></a>
+        </div>
+    </nav>
 
-        <!-- Profile -->
-        <div class="profile-container">
+    <!-- Main Content -->
+    <div class="profile-container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <!-- Profile Picture -->
+            <div class="profile-picture-wrapper">
+                <div class="profile-picture" id="profilePicture">
+                    <img id="profileImg" src="" alt="Profile Picture" style="display: none;">
+                    <div class="upload-overlay" id="uploadOverlay">
+                        <span>📷</span>
+                        <p>Upload Photo</p>
+                    </div>
+                </div>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            </div>
+
+            <!-- Year -->
+            <div class="info-field">
+                <span class="label">Year:</span>
+                <span class="value" id="yearDisplay">3</span>
+                <input type="number" class="edit-input" id="yearInput" min="1" max="7" value="3" style="display: none;">
+            </div>
+
+            <!-- Major -->
+            <div class="info-field">
+                <span class="label">Major:</span>
+                <span class="value" id="majorDisplay">Psychology</span>
+                <input type="text" class="edit-input" id="majorInput" value="Psychology" style="display: none;">
+            </div>
+
+            <!-- Favorite Foods -->
+            <div class="favorite-foods">
+                <div class="food-item" data-food="ramen">
+                    <img src="ramen.png" alt="Ramen">
+                </div>
+                <div class="food-item" data-food="rice">
+                    <img src="rice.png" alt="Rice">
+                </div>
+                <div class="food-item" data-food="taco">
+                    <img src="taco.png" alt="Taco">
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <!-- Header with Name and Edit Button -->
             <div class="profile-header">
-                <div class="profile-pic">
-                    <div class="profile-pic-inner"></div>
+                <div class="name-section">
+                    <h1 id="nameDisplay">Emily Tate</h1>
+                    <input type="text" class="edit-input name-input" id="nameInput" value="Emily Tate" style="display: none;">
+                    <p id="usernameDisplay">@eemily.tate</p>
+                    <input type="text" class="edit-input username-input" id="usernameInput" value="@eemily.tate" style="display: none;">
                 </div>
-                
-                <div class="profile-info">
-                    <div class="profile-name">Emily Tate</div>
-                    <div class="profile-username">@eemily.tate</div>
-                    
-                    <button class="edit-btn">Edit</button>
-                </div>
+                <button class="edit-btn" id="editBtn">Edit</button>
             </div>
 
-            <!-- Red Panda -->
+            <!-- Bio Section -->
             <div class="bio-section">
-                <img src="red-panda.png" alt="Red Panda" class="red-panda">
-                <div class="bio-bubble">
-                    <p class="bio-text">Hi I'm Emily! I love grabbing a cookie and an iced matcha latte from Blue Chip between my classes! Never miss a day of sweet treats!!!!!!</p>
+                <img src="peeking.png" alt="Red Panda" class="peeking-panda">
+                <div class="bio-text" id="bioDisplay">
+                    Hi I'm Emily! I love grabbing a cookie and an iced matcha latte from Blue Chip between my classes! Never miss a day of sweet treats!!!!!!!
                 </div>
+                <textarea class="bio-input" id="bioInput" style="display: none;">Hi I'm Emily! I love grabbing a cookie and an iced matcha latte from Blue Chip between my classes! Never miss a day of sweet treats!!!!!!!</textarea>
             </div>
 
-            <!-- Profile Details -->
-            <div class="profile-details">
-                <!-- Left Column -->
-                <div>
-                    <div class="detail-item">
-                        <div class="detail-label">Year: <span class="detail-value">3</span></div>
-                    </div>
-                    
-                    <div class="detail-item" style="margin-top: 30px;">
-                        <div class="detail-label">Major: <span class="detail-value">Psychology</span></div>
-                    </div>
-                    
-                    <div class="food-items" style="margin-top: 30px;">
-                        <img src="noodles.png" alt="Noodles" class="food-item">
-                        <img src="ramen.png" alt="Ramen" class="food-item">
-                        <img src="taco.png" alt="Taco" class="food-item">
-                    </div>
+            <!-- Personality Tags -->
+            <div class="personality-section">
+                <span class="label">Personality:</span>
+                <div class="tags-container" id="tagsContainer">
+                    <span class="tag">Hungry</span>
+                    <span class="tag">Easygoing</span>
+                    <span class="tag">Kind</span>
                 </div>
+                <button class="add-tag-btn" id="addTagBtn" style="display: none;">+ Add Tag</button>
+            </div>
 
-                <!-- Right Column -->
-                <div>
-                    <div class="detail-item">
-                        <div class="detail-label">Personality:</div>
-                        <div class="personality-tags">
-                            <span class="tag">Hungry</span>
-                            <span class="tag">Easygoing</span>
-                            <span class="tag">Kind</span>
-                        </div>
-                    </div>
-                    
-                    <div class="detail-item" style="margin-top: 30px;">
-                        <div class="detail-label">Fun Fact: <span class="detail-value" style="font-weight: normal;">Have never tried bubble tea</span></div>
-                    </div>
-                    
-                    <div class="detail-item" style="margin-top: 30px;">
-                        <div class="detail-label">Last Meal on Earth: <span class="detail-value" style="font-weight: normal;">Carbonara</span></div>
-                    </div>
+            <!-- Fun Fact -->
+            <div class="info-row">
+                <span class="label">Fun Fact:</span>
+                <span class="value" id="funFactDisplay">Have never tried bubble tea</span>
+                <input type="text" class="edit-input" id="funFactInput" value="Have never tried bubble tea" style="display: none;">
+            </div>
+
+            <!-- Last Meal on Earth -->
+            <div class="info-row">
+                <span class="label">Last Meal on Earth:</span>
+                <span class="value" id="lastMealDisplay">Carbonara</span>
+                <input type="text" class="edit-input" id="lastMealInput" value="Carbonara" style="display: none;">
+            </div>
+
+            <!-- Save/Cancel Buttons (hidden by default) -->
+            <div class="action-buttons" id="actionButtons" style="display: none;">
+                <button class="cancel-btn" id="cancelBtn">Cancel</button>
+                <button class="save-btn" id="saveBtn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tag Modal -->
+    <div class="modal" id="tagModal">
+        <div class="modal-content">
+            <h2>Add Personality Tag</h2>
+            <input type="text" id="newTagInput" placeholder="Enter tag (e.g., Adventurous)">
+            <div class="modal-buttons">
+                <button class="modal-btn cancel-btn" id="cancelTagBtn">Cancel</button>
+                <button class="modal-btn confirm-btn" id="confirmTagBtn">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Food Selection Modal -->
+    <div class="modal" id="foodModal">
+        <div class="modal-content food-modal">
+            <h2>Select Favorite Foods</h2>
+            <p class="modal-subtitle">Choose up to 3 favorite foods</p>
+            <div class="food-grid">
+                <div class="food-option" data-food="ramen">
+                    <img src="ramen.png" alt="Ramen">
+                    <p>Ramen</p>
                 </div>
+                <div class="food-option" data-food="rice">
+                    <img src="rice.png" alt="Rice">
+                    <p>Rice Bowl</p>
+                </div>
+                <div class="food-option" data-food="taco">
+                    <img src="taco.png" alt="Taco">
+                    <p>Taco</p>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel-btn" id="cancelFoodBtn">Cancel</button>
+                <button class="modal-btn confirm-btn" id="confirmFoodBtn">Save</button>
             </div>
         </div>
     </div>
