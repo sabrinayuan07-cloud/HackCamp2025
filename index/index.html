@@ -3,14 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Food Buddies - Find Food Buddies at UBC</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    
-    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Find <span class="highlight">Food Buddies.</span></h1>
+                <h1>Make Plans Easily.</h1>
+                <h1>Eat Happier at UBC.</h1>
+                <p>Match with students who want to eat at the same time and discover new spots around campus.</p>
+                <button class="login-btn" id="loginBtn">Log In</button>
+            </div>
+            <div class="hero-image">
+                <img src="index.png" alt="Red Panda with Food">
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="stat">
+            <h2>1 000+</h2>
+            <p>Users</p>
+        </div>
+        <div class="stat">
+            <h2>45+</h2>
+            <p>Restaurants Available</p>
+        </div>
+        <div class="stat">
+            <h2>120+</h2>
+            <p>Successful Meetups</p>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="login.png" alt="Red Panda" class="modal-logo">
+            </div>
+            <h2>Food Buddies</h2>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                
+                <a href="#" class="forgot-password">Forgot password?</a>
+                
+                <button type="submit" class="submit-btn">Log In</button>
+                
+                <p class="signup-text">Don't have an account? <a href="#" class="signup-link">Sign up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Login Modal Controls
+        const loginBtn = document.getElementById('loginBtn');
+        const loginModal = document.getElementById('loginModal');
+        const loginForm = document.getElementById('loginForm');
+
+        // Open modal
+        loginBtn.addEventListener('click', () => {
+            loginModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+
+        // Close modal when clicking outside
+        loginModal.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Handle regular login form
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // For now, just check if fields are filled
+            if (email && password) {
+                // Store login status
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userEmail', email);
+                
+                // Redirect to home page
+                window.location.href = 'home/home.html';
+            }
+        });
+
+        // Handle Google Sign-In Response
+        function handleCredentialResponse(response) {
+            // Decode the JWT token to get user info
+            const responsePayload = parseJwt(response.credential);
+            
+            console.log("ID: " + responsePayload.sub);
+            console.log('Full Name: ' + responsePayload.name);
+            console.log('Email: ' + responsePayload.email);
+            console.log('Image URL: ' + responsePayload.picture);
+
+            // Store user info
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userEmail', responsePayload.email);
+            localStorage.setItem('userName', responsePayload.name);
+            localStorage.setItem('userPicture', responsePayload.picture);
+
+            // Redirect to home page
+            window.location.href = 'home.html';
+        }
+
+        // Helper function to decode JWT token
+        function parseJwt(token) {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Food Buddies</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../home/home.html"><button class="active">Home</button></a>
+            <a href="../maps/maps.html"><button>Maps</button></a>
+            <a href="../events/Events.html"><button>Events</button></a>
+            <a href="../messages/Messages.html"><button>Messages</button></a>
+            <a href="../profile/Profile.html"><button>Profile</button></a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Find Food <span class="highlight">Buddies.</span></h1>
+                <h1>Make Plans Easily.</h1>
+                <h1>Eat Happier at UBC.</h1>
+                <p>Match with students who want to eat at the same time and discover new spots around campus.</p>
+            </div>
+            <div class="hero-image">
+                <img src="home.png" alt="Red Panda with Food">
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="stat">
+            <h2>1 000+</h2>
+            <p>Users</p>
+        </div>
+        <div class="stat">
+            <h2>45+</h2>
+            <p>Restaurants Available</p>
+        </div>
+        <div class="stat">
+            <h2>120+</h2>
+            <p>Successful Meetups</p>
+        </div>
+    </section>
+
+    <script>
+        // Check if user is logged in
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        
+        if (!isLoggedIn) {
+            // Redirect to index if not logged in
+            window.location.href = '../index.html';
+        }
+    </script>
+</body>
+</html>
