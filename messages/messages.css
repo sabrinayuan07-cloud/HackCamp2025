@@ -1,0 +1,93 @@
+.message-bubble p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.message-time {
+    font-size: 12px;
+    color: #999;
+    margin-top: 4px;
+}
+
+.sent .message-time {
+    margin-right: 12px;
+}
+
+.received .message-time {
+    margin-left: 12px;
+}
+
+/* Input Area */
+.input-area {
+    padding: 20px 30px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.message-input-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    padding: 12px 20px;
+}
+
+.message-input-container input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 15px;
+}
+
+.attachment-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.send-btn {
+    background-color: #FFB3C6;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.send-btn:hover {
+    background-color: #FF9BB3;
+}
+
+/* Scrollbar Styling */
+.contact-list::-webkit-scrollbar,
+.messages-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.contact-list::-webkit-scrollbar-track,
+.messages-area::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.contact-list::-webkit-scrollbar-thumb,
+.messages-area::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.contact-list::-webkit-scrollbar-thumb:hover,
+.messages-area::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
