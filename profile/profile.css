@@ -50,7 +50,6 @@ nav a {
 /* Profile Container */
 .profile-container {
     max-width: 1400px;
-    margin: 60px auto;
     padding: 40px;
     display: flex;
     gap: 80px;
@@ -69,8 +68,8 @@ nav a {
 }
 
 .profile-picture {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     background: linear-gradient(135deg, #FFB6C1 0%, #FFC5D3 100%);
     border: 8px solid white;
@@ -120,8 +119,8 @@ nav a {
 }
 
 .info-field {
-    font-size: 32px;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 400;
     text-align: center;
     width: 100%;
 }
@@ -150,8 +149,8 @@ nav a {
 }
 
 .food-item {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     background: white;
     border-radius: 15px;
     display: flex;
@@ -168,8 +167,8 @@ nav a {
 }
 
 .food-item img {
-    width: 60px;
-    height: 60px;
+    width: 75px;
+    height: 75px;
     object-fit: contain;
 }
 
@@ -199,7 +198,7 @@ nav a {
 }
 
 .name-section h1 {
-    font-size: 48px;
+    font-size: 45px;
     font-weight: 700;
     margin-bottom: 5px;
 }
@@ -235,7 +234,7 @@ nav a {
     font-size: 32px;
     font-weight: 600;
     cursor: pointer;
-    padding: 10px 20px;
+    padding: -10px -20px;
     align-self: flex-start;
     transition: color 0.3s;
     margin-top: -10px;
@@ -257,20 +256,20 @@ nav a {
 .peeking-panda {
     position: absolute;
     top: -100px;
-    right: 40px;
-    width: 150px;
+    right: 100px;
+    width: 170px;
     height: 120px;
 }
 
 .bio-text {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1.6;
     color: #333;
 }
 
 .bio-input {
     width: 100%;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1.6;
     border: 2px solid #FF93A9;
     border-radius: 15px;
@@ -289,7 +288,7 @@ nav a {
 }
 
 .personality-section .label {
-    font-size: 28px;
+    font-size: 25px;
     font-weight: 700;
 }
 
@@ -321,7 +320,7 @@ nav a {
     content: '×';
     position: absolute;
     right: 15px;
-    font-size: 28px;
+    font-size: 25px;
     font-weight: 400;
 }
 
@@ -335,7 +334,7 @@ nav a {
     color: #FF93A9;
     padding: 12px 30px;
     border-radius: 30px;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
@@ -350,7 +349,7 @@ nav a {
     display: flex;
     align-items: center;
     gap: 15px;
-    font-size: 28px;
+    font-size: 22px;
 }
 
 .info-row .label {
@@ -362,7 +361,7 @@ nav a {
 }
 
 .info-row .edit-input {
-    font-size: 28px;
+    font-size: 22px;
     border: 2px solid #FF93A9;
     border-radius: 8px;
     padding: 5px 15px;
