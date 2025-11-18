@@ -13,4 +13,4 @@ When users log in to Bento Buddies, they are directed to the **Homepage**, which
 
 
 
-**Team behind Bento Buddies: Bhumika, Wakana, Vicky & Sabrina
+## Team behind Bento Buddies: Bhumika, Wakana, Vicky & Sabrina
