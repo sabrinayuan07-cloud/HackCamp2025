@@ -224,9 +224,10 @@ function sendMessage() {
 
     conversations[selectedContactId].push(newMessage);
 
+
     const contact = contacts.find(c => c.id === selectedContactId);
     if (contact) {
-        contact.lastMessage = `You : ${text.substring(0, 30)}...`;
+        contact.lastMessage = text.length > 35 ? `You : ${text.substring(0, 35)}...` : `You : ${text}`;
         contact.unread = false;
     }
 
