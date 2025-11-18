@@ -12,5 +12,5 @@ When users log in to Bento Buddies, they are directed to the **Homepage**, which
 - **Profile**: View and edit your personal information and profile
 
 
-
-## Team behind Bento Buddies: Bhumika, Wakana, Vicky & Sabrina
+---
+Team behind Bento Buddies: Bhumika, Wakana, Vicky & Sabrina
