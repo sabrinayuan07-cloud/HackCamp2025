@@ -140,18 +140,38 @@
     <!-- Modal -->
     <div class="modal" id="meetupModal">
         <div class="modal-content">
-            <h2>Create Meetup</h2>
+            <h2 class="modal-title">Create Your Meetup</h2>
+            <p class="modal-subtitle">At: <span id="modalRestaurantName">Restaurant Name</span></p>
+            
             <div class="form-group">
-                <label for="meetupDate">Date:</label>
-                <input type="date" id="meetupDate" required>
+                <div class="input-wrapper">
+                    <input type="date" id="meetupDate" placeholder="Date" required>
+                    <span class="error-icon" id="dateError">⚠️</span>
+                </div>
             </div>
+            
             <div class="form-group">
-                <label for="meetupTime">Time:</label>
-                <input type="time" id="meetupTime" required>
+                <div class="input-wrapper">
+                    <input type="time" id="meetupTime" placeholder="Meal Time" required>
+                    <span class="error-icon" id="timeError">⚠️</span>
+                </div>
             </div>
+            
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <input type="number" id="meetupSpots" placeholder="Spots Available" min="1" required>
+                    <span class="error-icon" id="spotsError">⚠️</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <textarea id="meetupDetails" placeholder="Any details for your meetup?" rows="3"></textarea>
+                </div>
+            </div>
+
             <div class="modal-buttons">
-                <button class="modal-btn cancel-btn" id="cancelBtn">Cancel</button>
-                <button class="modal-btn confirm-btn" id="confirmBtn">Create</button>
+                <button class="modal-btn create-btn" id="confirmBtn">Create Meetup</button>
             </div>
         </div>
     </div>

@@ -74,6 +74,15 @@ function searchRestaurants() {
 }
 
 function createMarker(place) {
+    // Filter out unwanted places
+    const unwantedNames = ['university of british columbia', 'ubc', 'university'];
+    const placeName = place.name.toLowerCase();
+    
+    // Don't create marker if it matches unwanted names
+    if (unwantedNames.some(unwanted => placeName.includes(unwanted) && placeName === unwanted)) {
+        return;
+    }
+    
     const marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location,
@@ -288,56 +297,84 @@ document.querySelectorAll('.tab').forEach(tab => {
 // Create Meetup Button
 document.getElementById('createMeetupBtn').addEventListener('click', () => {
     document.getElementById('meetupModal').classList.add('active');
+    
+    // Set the restaurant name in modal
+    if (selectedPlace) {
+        document.getElementById('modalRestaurantName').textContent = selectedPlace.name;
+    }
+    
     // Set minimum date to today
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('meetupDate').min = today;
+    
+    // Clear any previous errors
+    document.querySelectorAll('.error-icon').forEach(icon => icon.classList.remove('show'));
+    document.querySelectorAll('.input-wrapper').forEach(wrapper => wrapper.classList.remove('error'));
 });
 
-// Cancel Button
-document.getElementById('cancelBtn').addEventListener('click', () => {
-    document.getElementById('meetupModal').classList.remove('active');
+// Close modal when clicking outside
+document.getElementById('meetupModal').addEventListener('click', (e) => {
+    if (e.target.id === 'meetupModal') {
+        document.getElementById('meetupModal').classList.remove('active');
+        clearForm();
+    }
+});
+
+function clearForm() {
     document.getElementById('meetupDate').value = '';
     document.getElementById('meetupTime').value = '';
-});
+    document.getElementById('meetupSpots').value = '';
+    document.getElementById('meetupDetails').value = '';
+    
+    // Clear errors
+    document.querySelectorAll('.error-icon').forEach(icon => icon.classList.remove('show'));
+    document.querySelectorAll('.input-wrapper').forEach(wrapper => wrapper.classList.remove('error'));
+}
 
 // Confirm Button - Create Event
 document.getElementById('confirmBtn').addEventListener('click', () => {
     const date = document.getElementById('meetupDate').value;
     const time = document.getElementById('meetupTime').value;
+    const spots = document.getElementById('meetupSpots').value;
+    const details = document.getElementById('meetupDetails').value;
 
-    if (!date || !time) {
-        alert('Please select both date and time');
+    // Clear previous errors
+    document.querySelectorAll('.error-icon').forEach(icon => icon.classList.remove('show'));
+    document.querySelectorAll('.input-wrapper').forEach(wrapper => {
+        wrapper.classList.remove('error');
+        wrapper.classList.remove('shake');
+    });
+
+    let hasError = false;
+
+    // Validate required fields
+    if (!date) {
+        document.getElementById('dateError').classList.add('show');
+        const wrapper = document.getElementById('meetupDate').parentElement;
+        wrapper.classList.add('error');
+        setTimeout(() => wrapper.classList.add('shake'), 10);
+        hasError = true;
+    }
+
+    if (!time) {
+        document.getElementById('timeError').classList.add('show');
+        const wrapper = document.getElementById('meetupTime').parentElement;
+        wrapper.classList.add('error');
+        setTimeout(() => wrapper.classList.add('shake'), 10);
+        hasError = true;
+    }
+
+    if (!spots || spots < 1) {
+        document.getElementById('spotsError').classList.add('show');
+        const wrapper = document.getElementById('meetupSpots').parentElement;
+        wrapper.classList.add('error');
+        setTimeout(() => wrapper.classList.add('shake'), 10);
+        hasError = true;
+    }
+
+    // If there are errors, don't submit
+    if (hasError) {
         return;
     }
 
-    // Create event object
-    const event = {
-        restaurant: selectedPlace.name,
-        placeId: selectedPlace.place_id,
-        address: selectedPlace.vicinity || selectedPlace.formatted_address,
-        date: date,
-        time: time,
-        createdAt: new Date().toISOString()
-    };
-
-    // Save to database (localStorage for now - replace with actual database)
-    const events = JSON.parse(localStorage.getItem('meetupEvents') || '[]');
-    events.push(event);
-    localStorage.setItem('meetupEvents', JSON.stringify(events));
-
-    // Close modal
-    document.getElementById('meetupModal').classList.remove('active');
-    
-    // Show success message
-    const successMsg = document.getElementById('successMessage');
-    successMsg.classList.add('active');
-    setTimeout(() => {
-        successMsg.classList.remove('active');
-    }, 3000);
-
-    // Reset form
-    document.getElementById('meetupDate').value = '';
-    document.getElementById('meetupTime').value = '';
-
-    console.log('Event created:', event);
 });
